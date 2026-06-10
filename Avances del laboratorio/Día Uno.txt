@@ -1,0 +1,10 @@
+Hice varias cosas:
+
+1- Se hizo una ree lectura de lo solicitado para la entrega de este portafolio. 
+
+2- Se creo el repositorio de GitHub para dicho proyecto, con la idea de ir mencionado, los días de avance, cuales fueron los cambios llevados a cabo o realizados a manera de bitácora (que se instalo, que herramientas se planea utilizar, los prompts que se le pidieron a la IA, y las ideas que se planean materializar a futuro)
+
+3- Decisión del proyecto: Me estoy debatiendo entre una academia de historia, puesto que es una de mis mayores obsesiones un área esencial para saber por qué el mundo es tal mundo tal y como es.
+
+4- Herramientas. Lo planeo trabajar en VSCode, con las extensiones para HTML SCC Support, Live Server y Pretellier, además de herramientas del navegador como DevTools, W3C y Contrast Checker. 
+
