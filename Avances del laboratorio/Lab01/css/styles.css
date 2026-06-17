@@ -1,0 +1,1076 @@
+/* ================================================
+   NovaNous, Inc. — styles.css
+   Autor: NovaNous Dev
+   Tecnologías: CSS3 nativo · Flexbox · CSS Grid
+   Accesibilidad: WCAG 2.1 Nivel A
+   ================================================ */
+
+/* ------------------------------------------------
+   1. VARIABLES / DESIGN TOKENS
+   ------------------------------------------------ */
+:root {
+  /* Paleta principal */
+  --color-navy:       #1B3A5C;   /* Azul marino profundo — encabezados, marca */
+  --color-navy-dark:  #122840;   /* Versión más oscura para hover / footer */
+  --color-accent:     #4A9BAF;   /* Celeste — acentos, badges, links */
+  --color-accent-alt: #D94F7B;   /* Rosa ADN — detalle de logo, badges */
+
+  /* Fondos */
+  --color-bg:         #F4F7FA;   /* Gris muy claro — fondo general */
+  --color-bg-white:   #FFFFFF;   /* Blanco — tarjetas, formulario */
+  --color-bg-hero:    #1B3A5C;   /* Fondo del hero */
+
+  /* Texto — contraste ≥ 4.5:1 sobre fondos claros */
+  --color-text:       #1A2636;   /* Texto principal: 10.5:1 sobre #F4F7FA ✓ */
+  --color-text-muted: #4A5568;   /* Texto secundario: 5.9:1 sobre #F4F7FA ✓ */
+  --color-text-light: #FFFFFF;   /* Texto sobre fondos oscuros */
+
+  /* Bordes y sombras */
+  --color-border:     #D1DBE8;
+  --shadow-sm:        0 2px 8px rgba(27, 58, 92, 0.08);
+  --shadow-md:        0 6px 24px rgba(27, 58, 92, 0.14);
+  --shadow-hover:     0 12px 32px rgba(27, 58, 92, 0.20);
+
+  /* Tipografía */
+  --font-display:     'Georgia', 'Times New Roman', serif;
+  --font-body:        system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  /* Espaciado base */
+  --space-xs:  0.25rem;
+  --space-sm:  0.5rem;
+  --space-md:  1rem;
+  --space-lg:  2rem;
+  --space-xl:  4rem;
+
+  /* Bordes redondeados */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  /* Transición estándar */
+  --transition: 200ms ease;
+}
+
+/* Modo oscuro — tokens sobreescritos */
+body.dark-mode {
+  --color-bg:        #0F1E30;
+  --color-bg-white:  #1A2E45;
+  --color-bg-hero:   #0A1520;
+  --color-text:      #E8F0F8;
+  --color-text-muted:#A8BECC;
+  --color-border:    #2A4060;
+  --shadow-sm:       0 2px 8px rgba(0,0,0,0.30);
+  --shadow-md:       0 6px 24px rgba(0,0,0,0.40);
+  --shadow-hover:    0 12px 32px rgba(0,0,0,0.50);
+}
+
+/* ------------------------------------------------
+   2. RESET Y BASE
+   ------------------------------------------------ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.7;
+  transition: background-color var(--transition), color var(--transition);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* Clase utilitaria: solo para lectores de pantalla */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ------------------------------------------------
+   3. ACCESIBILIDAD — ESTADOS :focus
+   WCAG 2.1 — criterio 2.4.7 y 2.1.1
+   ------------------------------------------------ */
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* ------------------------------------------------
+   4. HEADER Y NAVEGACIÓN
+   Layout: Flexbox (nav horizontal)
+   ------------------------------------------------ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--color-navy);
+  box-shadow: var(--shadow-md);
+}
+
+/* Flexbox: distribuye logo a la izquierda, nav a la derecha */
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.75rem var(--space-lg);
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.logo-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  object-fit: cover;
+  /* Fondo blanco para que el logo (con fondo transparente) destaque sobre el header oscuro */
+  background-color: #FFFFFF;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.logo-name {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text-light);
+  letter-spacing: 0.02em;
+}
+
+.logo-tagline {
+  font-size: 0.7rem;
+  color: var(--color-accent);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Nav list: Flexbox horizontal */
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.nav-link {
+  color: rgba(255,255,255,0.85);
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.4rem 0.6rem;
+  border-radius: var(--radius-sm);
+  transition: color var(--transition), background-color var(--transition);
+}
+
+.nav-link:hover {
+  color: var(--color-text-light);
+  background-color: rgba(255,255,255,0.1);
+}
+
+/* Botón modo oscuro */
+.dark-mode-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  background-color: rgba(255,255,255,0.12);
+  color: var(--color-text-light);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: var(--radius-lg);
+  padding: 0.4rem 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: background-color var(--transition), border-color var(--transition);
+  white-space: nowrap;
+}
+
+.dark-mode-btn:hover {
+  background-color: rgba(255,255,255,0.22);
+  border-color: rgba(255,255,255,0.45);
+}
+
+/* Botón hamburguesa (solo visible en móvil) */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 6px;
+  border-radius: var(--radius-sm);
+}
+
+.hamburger-bar {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-text-light);
+  border-radius: 2px;
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+/* ------------------------------------------------
+   5. HERO
+   ------------------------------------------------ */
+.hero {
+  background-color: var(--color-bg-hero);
+  color: var(--color-text-light);
+  text-align: center;
+  padding: var(--space-xl) var(--space-lg);
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content {
+  max-width: 720px;
+}
+
+.hero-eyebrow {
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-sm);
+  font-weight: 600;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: var(--space-md);
+  color: var(--color-text-light);
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: rgba(255,255,255,0.80);
+  margin-bottom: var(--space-lg);
+  font-style: italic;
+}
+
+/* Botones — Flexbox inline para alinearlos */
+.hero-actions {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ------------------------------------------------
+   6. BOTONES
+   ------------------------------------------------ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1.6rem;
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background-color var(--transition), transform var(--transition), box-shadow var(--transition);
+  text-decoration: none;
+  border: 2px solid transparent;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background-color: var(--color-accent);
+  color: var(--color-text-light);
+  border-color: var(--color-accent);
+}
+
+.btn-primary:hover {
+  background-color: #3a8a9e;
+  border-color: #3a8a9e;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-text-light);
+  border-color: rgba(255,255,255,0.55);
+}
+
+.btn-secondary:hover {
+  background-color: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.85);
+}
+
+.btn--sm {
+  padding: 0.5rem 1.1rem;
+  font-size: 0.88rem;
+  margin-top: var(--space-sm);
+}
+
+/* ------------------------------------------------
+   7. STATS
+   CSS Grid: 4 columnas en escritorio
+   ------------------------------------------------ */
+.stats {
+  background-color: var(--color-bg-white);
+  padding: var(--space-lg) var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);  /* Grid de 4 columnas */
+  gap: var(--space-md);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-lg) var(--space-md);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+}
+
+.stat-number {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  line-height: 1;
+  margin-bottom: var(--space-xs);
+}
+
+body.dark-mode .stat-number {
+  color: var(--color-accent);
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+/* ------------------------------------------------
+   8. CURSOS
+   CSS Grid: 3 columnas en escritorio
+   ------------------------------------------------ */
+.courses {
+  padding: var(--space-xl) var(--space-lg);
+  background-color: var(--color-bg);
+}
+
+.section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  color: var(--color-navy);
+  margin-bottom: var(--space-sm);
+  line-height: 1.2;
+}
+
+body.dark-mode .section-title {
+  color: var(--color-accent);
+}
+
+.section-subtitle {
+  color: var(--color-text-muted);
+  font-size: 1rem;
+}
+
+/* Grid de cursos: 3 columnas */
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+/* Tarjeta de curso */
+.course-card {
+  background-color: var(--color-bg-white);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  /* Animación de hover */
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+/* Hover effect — animación CSS */
+.course-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Tarjeta activa (disponible) */
+.course-card--active {
+  border-color: var(--color-accent);
+  border-width: 2px;
+}
+
+.course-card-img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.course-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 300ms ease;
+}
+
+.course-card:hover .course-card-img {
+  transform: scale(1.04);
+}
+
+/* Badges */
+.course-badge {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  padding: 0.2rem 0.7rem;
+  border-radius: var(--radius-lg);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.course-badge--soon {
+  background-color: rgba(255,255,255,0.92);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+}
+
+.course-badge--available {
+  background-color: #D4EDDA;
+  color: #1B5E2F;
+  /* Contraste de #1B5E2F sobre #D4EDDA: 7.2:1 ✓ */
+}
+
+body.dark-mode .course-badge--available {
+  background-color: #1B4A2F;
+  color: #A8F0C0;
+}
+
+.course-card-body {
+  padding: var(--space-md) var(--space-md) var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.course-card-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--color-navy);
+  margin-bottom: var(--space-sm);
+}
+
+body.dark-mode .course-card-title {
+  color: var(--color-accent);
+}
+
+.course-card-desc {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  flex: 1;
+}
+
+/* ------------------------------------------------
+   9. SOBRE NOSOTROS
+   ------------------------------------------------ */
+.about {
+  background-color: var(--color-bg-white);
+  padding: var(--space-xl) var(--space-lg);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Grid: texto + aside de valores */
+.about-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+.about-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.about-text p {
+  color: var(--color-text-muted);
+  line-height: 1.8;
+}
+
+/* Aside de valores */
+.values-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.value-item {
+  padding: var(--space-md);
+  border-left: 3px solid var(--color-accent);
+  background-color: var(--color-bg);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.value-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: var(--space-xs);
+}
+
+.value-desc {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+/* ------------------------------------------------
+   10. CONTACTO
+   ------------------------------------------------ */
+.contact {
+  padding: var(--space-xl) var(--space-lg);
+  background-color: var(--color-bg);
+}
+
+.contact .section-title,
+.contact .section-subtitle {
+  text-align: center;
+}
+
+.contact .section-subtitle {
+  margin-bottom: var(--space-lg);
+}
+
+/* Formulario */
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.form-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.form-input {
+  padding: 0.7rem 1rem;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-family: inherit;
+  background-color: var(--color-bg-white);
+  color: var(--color-text);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.form-input:hover {
+  border-color: var(--color-accent);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(74, 155, 175, 0.25);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contact-form .btn {
+  align-self: flex-start;
+}
+
+.form-success {
+  max-width: 600px;
+  margin: var(--space-md) auto 0;
+  padding: var(--space-md);
+  background-color: #D4EDDA;
+  color: #1B5E2F;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  text-align: center;
+}
+
+/* ------------------------------------------------
+   11. FOOTER
+   ------------------------------------------------ */
+.site-footer {
+  background-color: var(--color-navy-dark);
+  color: rgba(255,255,255,0.75);
+  padding: var(--space-lg);
+}
+
+/* Flexbox: copyright a la izquierda, nav a la derecha */
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.footer-copy {
+  font-size: 0.85rem;
+}
+
+.footer-nav {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.footer-link {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.65);
+  transition: color var(--transition);
+}
+
+.footer-link:hover {
+  color: var(--color-text-light);
+}
+
+/* ------------------------------------------------
+   12. MEDIA QUERIES — RESPONSIVIDAD
+   Breakpoints:
+     · Tablet:  ≤ 900px
+     · Móvil:   ≤ 600px
+   ------------------------------------------------ */
+
+/* --- TABLET (≤ 900px) --- */
+@media (max-width: 900px) {
+
+  /* Stats: 2 columnas */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Cursos: 2 columnas */
+  .courses-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Sobre nosotros: 1 columna apilada */
+  .about-inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  /* Header: reducir padding */
+  .header-inner {
+    padding: 0.75rem var(--space-md);
+  }
+}
+
+/* --- MÓVIL (≤ 600px) --- */
+@media (max-width: 600px) {
+
+  /* Mostrar botón hamburguesa */
+  .nav-toggle {
+    display: flex;
+    z-index: 101;
+  }
+
+  /* Ocultar nav por defecto en móvil */
+  .main-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--color-navy);
+    flex-direction: column;
+    align-items: stretch;
+    padding: var(--space-md);
+    gap: var(--space-sm);
+    box-shadow: var(--shadow-md);
+  }
+
+  /* Cuando está abierto */
+  .main-nav.is-open {
+    display: flex;
+  }
+
+  .site-header {
+    position: relative; /* para que el nav absoluto funcione */
+  }
+
+  .nav-list {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .nav-link {
+    display: block;
+    padding: 0.7rem var(--space-sm);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .dark-mode-btn {
+    align-self: flex-start;
+    margin-top: var(--space-sm);
+  }
+
+  /* Stats: 1 columna */
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Cursos: 1 columna */
+  .courses-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Hero padding */
+  .hero {
+    padding: var(--space-xl) var(--space-md);
+    min-height: 60vh;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Footer: apilar */
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  /* Secciones padding */
+  .courses,
+  .about,
+  .contact {
+    padding: var(--space-xl) var(--space-md);
+  }
+
+  .contact-form .btn {
+    align-self: stretch;
+  }
+}
+
+/* ------------------------------------------------
+   13. SISTEMA DE NIVELES (NAVEGACIÓN JERÁRQUICA)
+   .hidden  → display: none (controlado por JS)
+   .active  → estado visible (también controlado por JS)
+   ------------------------------------------------ */
+
+/* Clases utilitarias de visibilidad — usadas por main.js */
+.hidden {
+  display: none !important;
+}
+
+.active {
+  display: block;
+}
+
+@keyframes fadeSlideDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Contenedor de cada nivel (1, 2 y 3) */
+.level {
+  margin-top: var(--space-xl);
+  animation: fadeSlideDown 280ms ease both;
+}
+
+/* El Nivel 1 no necesita margen extra: ya está dentro de .section-inner */
+.level--1 {
+  margin-top: 0;
+}
+
+/* Encabezado de nivel: título + botón "volver" */
+.level-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-sm);
+  border-bottom: 2px solid var(--color-border);
+}
+
+.level-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--color-navy);
+}
+
+body.dark-mode .level-title {
+  color: var(--color-accent);
+}
+
+/* ------------------------------------------------
+   14. TARJETAS INACTIVAS / DESHABILITADAS
+   Contraste AA: texto muted #4A5568 sobre #F4F7FA = 5.9:1 ✓
+   Botones deshabilitados conservan contraste legible.
+   ------------------------------------------------ */
+
+.course-card--disabled,
+.sub-card--disabled {
+  opacity: 0.85; /* leve, para no caer bajo el mínimo de contraste */
+}
+
+.course-card--disabled .course-card-img {
+  filter: grayscale(35%);
+}
+
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  cursor: not-allowed;
+  background-color: var(--color-border);
+  border-color: var(--color-border);
+  color: var(--color-text-muted);
+}
+
+body.dark-mode .btn:disabled,
+body.dark-mode .btn[aria-disabled="true"] {
+  background-color: #2A4060;
+  border-color: #2A4060;
+  color: var(--color-text-muted);
+}
+
+.btn:disabled:hover,
+.btn[aria-disabled="true"]:hover {
+  background-color: var(--color-border);
+  border-color: var(--color-border);
+  box-shadow: none;
+}
+
+/* ------------------------------------------------
+   15. NIVEL 2 — SUBCATEGORÍAS (Grid de 3 columnas)
+   ------------------------------------------------ */
+
+.subcategories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.sub-card {
+  background-color: var(--color-bg-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.sub-card--active {
+  border-color: var(--color-accent);
+  border-width: 2px;
+}
+
+.sub-card-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+body.dark-mode .sub-card-title {
+  color: var(--color-accent);
+}
+
+.sub-card-desc {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.sub-card-badge {
+  position: static;
+  align-self: flex-start;
+  margin-top: var(--space-sm);
+}
+
+/* ------------------------------------------------
+   16. NIVEL 3 — CURSO DE PALEONTOLOGÍA
+   ------------------------------------------------ */
+
+.course-detail-card {
+  background-color: var(--color-bg-white);
+  border: 2px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+}
+
+.course-detail-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-sm);
+}
+
+.course-detail-name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--color-navy);
+}
+
+body.dark-mode .course-detail-name {
+  color: var(--color-accent);
+}
+
+.course-detail-desc {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin-bottom: var(--space-md);
+}
+
+/* ------------------------------------------------
+   17. RESPONSIVIDAD DE NIVELES
+   ------------------------------------------------ */
+
+@media (max-width: 900px) {
+  .subcategories-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .subcategories-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .level-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .level-header .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ------------------------------------------------
+   18. PREFERS-REDUCED-MOTION
+
+   Accesibilidad: deshabilitar animaciones para
+   usuarios que lo prefieran (WCAG 2.3.3)
+   ------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .course-card:hover {
+    transform: none;
+  }
+
+  .course-card:hover .course-card-img {
+    transform: none;
+  }
+}

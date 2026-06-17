@@ -1,0 +1,8 @@
+Dia Cuatro:
+Decidi borrar el código original, pues al final este termino desgustando al cliente. 
+Esta vez frustrado, comencé a escribir el HTML y el CSS a mano.
+El JS, si le pedi que lo hiciera el Cloude. Agarre el HTML y el CSS, se lo pegue a dicha IA junto con las imágenes que mi cliente me había pasado de como era que quería que se viera su página. Tras pasarle el contexto, le hice un prompt para que escribiera el JS, cosa que termino haciendo. 
+
+Día Cinco:
+Al final, con las imágenes y demás, lo termine "decorando" tanto el styless como el HTML, y las guarde en una carpeta assets junto con el PDF.
+De momento, no cuenta la involucración de precios. La voy a dejar así. 

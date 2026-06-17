@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="NovaNous, Inc. — Academia de conocimiento. Cursos de cultura general, ciencias, artes y deportes."
+    />
+    <title>NovaNous, Inc. — Academia de Conocimiento</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+
+  <body>
+    <!-- =============================================
+         HEADER + NAVEGACIÓN
+         ============================================= -->
+    <header class="site-header" role="banner">
+      <div class="header-inner">
+
+        <!-- Logo -->
+        <a href="#inicio" class="logo" aria-label="NovaNous, Inc. — Ir al inicio">
+          <img
+            src="./assets/logo_novanous.png"
+            alt="Logotipo de NovaNous, Inc.: un engranaje azul marino con una doble hélice de ADN en su interior"
+            class="logo-img"
+            width="48"
+            height="48"
+          />
+          <span class="logo-text">
+            <span class="logo-name">NovaNous</span>
+            <span class="logo-tagline">Inc.</span>
+          </span>
+        </a>
+
+        <!-- Botón hamburguesa para móvil -->
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          aria-expanded="false"
+          aria-controls="mainNav"
+          aria-label="Abrir menú de navegación"
+        >
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+
+        <!-- Navegación principal -->
+        <nav class="main-nav" id="mainNav" role="navigation" aria-label="Navegación principal">
+          <ul class="nav-list" role="list">
+            <li><a href="#inicio" class="nav-link">Inicio</a></li>
+            <li><a href="#cursos" class="nav-link">Cursos</a></li>
+            <li><a href="#nosotros" class="nav-link">Sobre nosotros</a></li>
+            <li><a href="#contacto" class="nav-link">Contacto</a></li>
+          </ul>
+
+          <!-- Modo oscuro -->
+          <button
+            class="dark-mode-btn"
+            id="darkModeToggle"
+            aria-pressed="false"
+            aria-label="Activar modo oscuro"
+          >
+            <span class="dark-mode-icon" aria-hidden="true">🌙</span>
+            <span class="dark-mode-label">Modo oscuro</span>
+          </button>
+        </nav>
+
+      </div>
+    </header>
+
+    <!-- =============================================
+         CONTENIDO PRINCIPAL
+         ============================================= -->
+    <main id="inicio">
+
+      <!-- HERO -->
+      <section class="hero" aria-labelledby="heroTitle">
+        <div class="hero-content">
+          <p class="hero-eyebrow">Academia de Conocimiento</p>
+          <h1 class="hero-title" id="heroTitle">NovaNous, Inc.</h1>
+          <p class="hero-subtitle">
+            Invierte en lo único que nadie puede quitarte: el conocimiento.
+          </p>
+          <div class="hero-actions">
+            <a href="#cursos" class="btn btn-primary">Explorar cursos</a>
+            <a href="#nosotros" class="btn btn-secondary">Sobre nosotros</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ESTADÍSTICAS -->
+      <section class="stats" aria-labelledby="statsTitle">
+        <h2 class="sr-only" id="statsTitle">Estadísticas de NovaNous</h2>
+        <ul class="stats-grid" role="list">
+          <li class="stat-card">
+            <span class="stat-number">3</span>
+            <span class="stat-label">Áreas de conocimiento</span>
+          </li>
+          <li class="stat-card">
+            <span class="stat-number">1</span>
+            <span class="stat-label">Curso disponible ahora</span>
+          </li>
+          <li class="stat-card">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Contenido propio</span>
+          </li>
+          <li class="stat-card">
+            <span class="stat-number">UTN</span>
+            <span class="stat-label">Rigor académico verificado</span>
+          </li>
+        </ul>
+      </section>
+
+      <!-- =====================================================
+           CURSOS — Navegación jerárquica de 3 niveles
+           Nivel 1: Áreas (Ciencia y Filosofía / Artes / Deportes)
+           Nivel 2: Subcategorías de Ciencia y Filosofía
+           Nivel 3: Cursos disponibles de Ciencias Naturales
+           ===================================================== -->
+      <section class="courses" id="cursos" aria-labelledby="coursesTitle">
+        <div class="section-inner">
+          <header class="section-header">
+            <h2 class="section-title" id="coursesTitle">Nuestros Cursos</h2>
+            <p class="section-subtitle">Selecciona un área para explorar el catálogo disponible.</p>
+          </header>
+
+          <!-- ============================================
+               NIVEL 1 — Áreas principales
+               ============================================ -->
+          <section class="level level--1 active" id="level1" aria-label="Áreas de conocimiento">
+            <div class="courses-grid" role="list">
+
+              <!-- Tarjeta: Ciencia y Filosofía (activa, abre Nivel 2) -->
+              <article class="course-card course-card--active" role="listitem" aria-labelledby="courseCiencia">
+                <div class="course-card-img-wrap">
+                  <img
+                    src="./assets/card_ciencia.png"
+                    alt="Collage de ciencia y filosofía: evolución humana, Einstein, Darwin, Descartes y otras figuras históricas"
+                    class="course-card-img"
+                    loading="lazy"
+                  />
+                  <span class="course-badge course-badge--available">Disponible</span>
+                </div>
+                <div class="course-card-body">
+                  <h3 class="course-card-title" id="courseCiencia">Ciencia y Filosofía</h3>
+                  <p class="course-card-desc">
+                    Ciencias formales, naturales y sociales. Pensamiento crítico y método científico.
+                  </p>
+                  <!--
+                    aria-expanded: informa al lector de pantalla si el Nivel 2 está abierto.
+                    aria-controls: vincula el botón con la sección que controla.
+                  -->
+                  <button
+                    class="btn btn-primary btn--sm toggle-level"
+                    id="btnLevel2"
+                    aria-expanded="false"
+                    aria-controls="level2"
+                  >
+                    Ver subcategorías
+                  </button>
+                </div>
+              </article>
+
+              <!-- Tarjeta: Artes (inactiva) -->
+              <article class="course-card course-card--disabled" role="listitem" aria-labelledby="courseArtes">
+                <div class="course-card-img-wrap">
+                  <img
+                    src="./assets/card_artes.png"
+                    alt="Collage de artes: la Puerta de Brandeburgo, bailarines de ballet, un pergamino antiguo, una violinista, la Mona Lisa, una escultura clásica y una sala de cine"
+                    class="course-card-img"
+                    loading="lazy"
+                  />
+                  <span class="course-badge course-badge--soon">Próximamente</span>
+                </div>
+                <div class="course-card-body">
+                  <h3 class="course-card-title" id="courseArtes">Artes</h3>
+                  <p class="course-card-desc">
+                    Música, pintura, literatura, danza y cine. Catálogo en construcción.
+                  </p>
+                  <button class="btn btn-secondary btn--sm" disabled aria-disabled="true">
+                    Próximamente
+                  </button>
+                </div>
+              </article>
+
+              <!-- Tarjeta: Deportes (inactiva) -->
+              <article class="course-card course-card--disabled" role="listitem" aria-labelledby="courseDeportes">
+                <div class="course-card-img-wrap">
+                  <img
+                    src="./assets/card_deportes.png"
+                    alt="Conjunto de implementos deportivos: balón de baloncesto, balón de fútbol americano, balón de fútbol, bate y pelota de béisbol, y raqueta de tenis"
+                    class="course-card-img"
+                    loading="lazy"
+                  />
+                  <span class="course-badge course-badge--soon">Próximamente</span>
+                </div>
+                <div class="course-card-body">
+                  <h3 class="course-card-title" id="courseDeportes">Deportes</h3>
+                  <p class="course-card-desc">
+                    Estrategia, disciplina y rendimiento. Próximos cursos de ajedrez, atletismo y más.
+                  </p>
+                  <button class="btn btn-secondary btn--sm" disabled aria-disabled="true">
+                    Próximamente
+                  </button>
+                </div>
+              </article>
+
+            </div>
+          </section>
+
+          <!-- ============================================
+               NIVEL 2 — Subcategorías de Ciencia y Filosofía
+               Oculto por defecto (.hidden); JS quita la clase
+               ============================================ -->
+          <section
+            class="level level--2 hidden"
+            id="level2"
+            aria-labelledby="level2Title"
+            tabindex="-1"
+          >
+            <div class="level-header">
+              <h3 class="level-title" id="level2Title">Ciencia y Filosofía — Subcategorías</h3>
+              <button class="btn btn-secondary btn--sm" id="btnBackTo1" aria-controls="level1">
+                ← Volver a Áreas
+              </button>
+            </div>
+
+            <div class="subcategories-grid" role="list">
+
+              <!-- Ciencias Formales (inactiva) -->
+              <article class="sub-card sub-card--disabled" role="listitem" aria-labelledby="subFormales">
+                <h4 class="sub-card-title" id="subFormales">Ciencias Formales</h4>
+                <p class="sub-card-desc">
+                  Matemática, lógica, estadística e ingeniería. Catálogo en desarrollo.
+                </p>
+                <span class="course-badge course-badge--soon sub-card-badge">Próximamente</span>
+              </article>
+
+              <!-- Ciencias Sociales (inactiva) -->
+              <article class="sub-card sub-card--disabled" role="listitem" aria-labelledby="subSociales">
+                <h4 class="sub-card-title" id="subSociales">Ciencias Sociales</h4>
+                <p class="sub-card-desc">
+                  Historia, economía, ciencias políticas, derecho y sociología.
+                </p>
+                <span class="course-badge course-badge--soon sub-card-badge">Próximamente</span>
+              </article>
+
+              <!-- Ciencias Naturales (activa, abre Nivel 3) -->
+              <article class="sub-card sub-card--active" role="listitem" aria-labelledby="subNaturales">
+                <h4 class="sub-card-title" id="subNaturales">Ciencias Naturales</h4>
+                <p class="sub-card-desc">
+                  Biología, química, física, geología y paleontología. Primer curso activo.
+                </p>
+                <span class="course-badge course-badge--available sub-card-badge">Disponible</span>
+                <button
+                  class="btn btn-primary btn--sm toggle-level"
+                  id="btnLevel3"
+                  aria-expanded="false"
+                  aria-controls="level3"
+                  style="margin-top: 0.75rem;"
+                >
+                  Ver cursos disponibles
+                </button>
+              </article>
+
+            </div>
+          </section>
+
+          <!-- ============================================
+               NIVEL 3 — Cursos de Ciencias Naturales
+               Oculto por defecto (.hidden); JS quita la clase
+               ============================================ -->
+          <section
+            class="level level--3 hidden"
+            id="level3"
+            aria-labelledby="level3Title"
+            tabindex="-1"
+          >
+            <div class="level-header">
+              <h3 class="level-title" id="level3Title">Ciencias Naturales — Cursos disponibles</h3>
+              <button class="btn btn-secondary btn--sm" id="btnBackTo2" aria-controls="level2">
+                ← Volver a Subcategorías
+              </button>
+            </div>
+
+            <article class="course-detail-card" aria-labelledby="paleoCursoTitulo">
+              <div class="course-detail-info">
+                <div class="course-detail-header">
+                  <h4 class="course-detail-name" id="paleoCursoTitulo">
+                    Paleontología: El Latido de la Tierra
+                  </h4>
+                  <span class="course-badge course-badge--available">Disponible</span>
+                </div>
+                <p class="course-detail-desc">
+                  Explora el registro fósil y la historia de la vida en la Tierra. Desde los
+                  primeros organismos hasta las grandes extinciones masivas, este curso te
+                  enseña a leer el tiempo en las rocas.
+                </p>
+                <!--
+                  Atributo download: fuerza la descarga del PDF en lugar de abrirlo.
+                  El archivo debe colocarse en ./assets/paleontologia.pdf
+                -->
+                <a
+                  href="./assets/paleontologia.pdf"
+                  download="NovaNous-Paleontologia-ElLatidoDeLaTierra.pdf"
+                  class="btn btn-primary"
+                  id="downloadPaleo"
+                  aria-label="Descargar el material del curso de Paleontología en formato PDF"
+                >
+                  ⬇ Descargar material (PDF)
+                </a>
+              </div>
+            </article>
+          </section>
+
+        </div>
+      </section>
+
+      <!-- SOBRE NOSOTROS -->
+      <section class="about" id="nosotros" aria-labelledby="aboutTitle">
+        <div class="section-inner about-inner">
+          <div class="about-text">
+            <h2 class="section-title" id="aboutTitle">¿Quiénes somos?</h2>
+            <p>
+              Un emprendimiento personal dedicado a la venta de conocimiento como inversión.
+            </p>
+            <p>
+              En NovaNous creemos que aprender es la mejor inversión que una persona puede hacer. No
+              vendemos diplomas ni títulos: vendemos comprensión real, criterio y herramientas
+              intelectuales aplicables al mundo que te rodea.
+            </p>
+            <p>
+              Nuestro catálogo abarca desde las ciencias formales y naturales, pasando por las ciencias
+              sociales, las artes y los deportes. Comenzamos pequeños, pero con rigor académico desde
+              el primer curso.
+            </p>
+          </div>
+
+          <!-- Valores: usa <aside> porque son información complementaria al texto principal -->
+          <aside class="about-values" aria-label="Valores de NovaNous">
+            <ul class="values-list" role="list">
+              <li class="value-item">
+                <h3 class="value-title">Rigor académico</h3>
+                <p class="value-desc">Cada curso está respaldado por fuentes verificadas y revisadas antes de publicarse.</p>
+              </li>
+              <li class="value-item">
+                <h3 class="value-title">Accesibilidad</h3>
+                <p class="value-desc">Precios justos para que el conocimiento no sea un privilegio, sino un derecho.</p>
+              </li>
+              <li class="value-item">
+                <h3 class="value-title">Pensamiento crítico</h3>
+                <p class="value-desc">No enseñamos qué pensar, sino cómo pensar. La curiosidad es el punto de partida.</p>
+              </li>
+              <li class="value-item">
+                <h3 class="value-title">Crecimiento continuo</h3>
+                <p class="value-desc">Expandimos el catálogo constantemente. Hay más por venir.</p>
+              </li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <!-- CONTACTO -->
+      <section class="contact" id="contacto" aria-labelledby="contactTitle">
+        <div class="section-inner">
+          <h2 class="section-title" id="contactTitle">Contacto</h2>
+          <p class="section-subtitle">¿Tienes preguntas? Escríbenos y te respondemos pronto.</p>
+
+          <form
+            class="contact-form"
+            id="contactForm"
+            novalidate
+            aria-label="Formulario de contacto"
+          >
+            <div class="form-group">
+              <label for="contactName" class="form-label">Nombre</label>
+              <input
+                type="text"
+                id="contactName"
+                name="nombre"
+                class="form-input"
+                autocomplete="name"
+                placeholder="Tu nombre completo"
+                aria-required="true"
+              />
+            </div>
+            <div class="form-group">
+              <label for="contactEmail" class="form-label">Correo electrónico</label>
+              <input
+                type="email"
+                id="contactEmail"
+                name="correo"
+                class="form-input"
+                autocomplete="email"
+                placeholder="tu@correo.com"
+                aria-required="true"
+              />
+            </div>
+            <div class="form-group">
+              <label for="contactMsg" class="form-label">Mensaje</label>
+              <textarea
+                id="contactMsg"
+                name="mensaje"
+                class="form-input form-textarea"
+                rows="4"
+                placeholder="¿En qué podemos ayudarte?"
+                aria-required="true"
+              ></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+          </form>
+
+          <!-- Confirmación visible tras envío -->
+          <p
+            class="form-success"
+            id="formSuccess"
+            role="status"
+            aria-live="polite"
+            hidden
+          >
+            ✅ Mensaje recibido. ¡Gracias por escribirnos!
+          </p>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="footer-inner">
+        <p class="footer-copy">
+          &copy; <span id="currentYear"></span> NovaNous, Inc. — Todos los derechos reservados.
+        </p>
+        <nav aria-label="Navegación del pie de página">
+          <ul class="footer-nav" role="list">
+            <li><a href="#inicio" class="footer-link">Inicio</a></li>
+            <li><a href="#cursos" class="footer-link">Cursos</a></li>
+            <li><a href="#nosotros" class="footer-link">Sobre nosotros</a></li>
+            <li><a href="#contacto" class="footer-link">Contacto</a></li>
+          </ul>
+        </nav>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

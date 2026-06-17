@@ -1,0 +1,7 @@
+Para este día, se hicieron algunos avances.
+
+La mayor parte del HTML está hecha, por lo que solo faltaría continuar con el CSS y el JS.
+
+También se hizo un documento PDF con todo lo que era la información que debía encajar en el curso. 
+
+Los prompts para la IA consistieron en intentar contextualizarla sobre los requisitos del cliente. 
