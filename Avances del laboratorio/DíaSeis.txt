@@ -1,0 +1,3 @@
+El código, al final, fue en extremo ineficiente. Me apoye de la IA para terminar el HTML y el Styless. 
+
+El código anterior tenía errores con el viewport a la hora de mostrarse la imagen en pantallas celulares. Tras varias pruebas, ahora si debería estar funcionando correctamente. 
