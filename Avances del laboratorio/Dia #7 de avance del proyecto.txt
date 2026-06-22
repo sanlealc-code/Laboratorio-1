@@ -1,0 +1,20 @@
+Bitácora de Desarrollo: NovaNous, Inc.
+Fase 1: Análisis y Definición (Identidad y Requerimientos)
+Comencé con un análisis de los requerimientos del Laboratorio #1 de la UTN. En contacto con mi cliente, fue que definí la identidad visual de "NovaNous, Inc." basándome en una estética corporativa-académica: paleta de azules profundos, tipografía profesional y un sistema de diseño responsivo. Se establecieron las bases técnicas exigidas por el curso: HTML5 semántico, CSS (Flexbox/Grid), accesibilidad WCAG 2.1 nivel A y persistencia de datos con localStorage.
+
+Fase 2: Arquitectura del Proyecto y Maquetación
+Se creó la estructura de archivos (index.html, /css, /js, /assets). La primera iteración del código se enfocó, en que, de la manera más cercana posible, cumpliera con los estándares W3C. Se integró el logo y se estructuró el header y el main. En esta etapa, el reto principal fue asegurar que el sitio fuera totalmente navegable mediante teclado, implementando correctamente los estados de :focus y los atributos ARIA para lectores de pantalla.
+
+Fase 3: Implementación de Lógica y Jerarquía (Sistema de Niveles)
+Se reestructuró la lógica de navegación para pasar de una página estática a un sistema dinámico de 3 niveles:
+
+Nivel 1: Categorías principales (Ciencia, Artes, Deportes).
+
+Nivel 2: Subcategorías dentro de Ciencia y Filosofía.
+
+Nivel 3: Cursos específicos (Paleontología) con acceso a descarga de material.
+
+Para esto, se reemplazó el control manual por una lógica de clases CSS (.hidden / .active) gestionada por JavaScript, permitiendo que el usuario navegue a través de la jerarquía sin recargar la página, manteniendo la responsividad y la integridad semántica del DOM.
+
+Fase 4: Optimización y Accesibilidad Final
+Se ajustaron los contrastes de color (mínimo 4.5:1) y se implementó la media query prefers-reduced-motion para garantizar una experiencia inclusiva. Finalmente, se configuraron las rutas relativas de los activos (/assets) para asegurar que tanto imágenes como archivos PDF sean detectados correctamente al abrir el sitio localmente o al desplegarlo en un servidor (GitHub Pages).
