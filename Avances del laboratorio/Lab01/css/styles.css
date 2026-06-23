@@ -372,7 +372,7 @@ button {
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);  /* Grid de 4 columnas */
+  grid-template-columns: repeat(3, 1fr);  /* Grid de 4 columnas */
   gap: var(--space-md);
   max-width: 1200px;
   margin: 0 auto;
@@ -619,6 +619,49 @@ body.dark-mode .course-card-title {
 
 .contact .section-subtitle {
   margin-bottom: var(--space-lg);
+}
+
+/* Datos de contacto directo (tel + email) */
+.contact-info {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  max-width: 600px;
+  margin: 0 auto var(--space-lg);
+  padding: var(--space-md);
+  background-color: var(--color-bg-white);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-accent);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.contact-info li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: 0.95rem;
+}
+
+.contact-info-label {
+  font-weight: 600;
+  color: var(--color-text);
+  min-width: 70px;
+}
+
+.contact-info-link {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transition);
+}
+
+.contact-info-link:hover {
+  color: var(--color-navy);
+}
+
+body.dark-mode .contact-info-link:hover {
+  color: var(--color-text-light);
 }
 
 /* Formulario */

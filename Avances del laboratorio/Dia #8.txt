@@ -1,0 +1,1 @@
+Se hicieron las utlimas modificaciones para que cumpliera con la W3C y el problema del UTF-8 con el PDF, además del área de contactos.

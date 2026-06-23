@@ -121,7 +121,10 @@ if (yearSpan) {
 
 /* ============================================================
    4. FORMULARIO DE CONTACTO
-   Persistencia del nombre del usuario con localStorage
+   - Persistencia del nombre con localStorage (Web Storage ✓)
+   - Envío real vía Formspree (action en el <form>)
+   - Fallback de confirmación en pantalla al enviar por fetch
+     (útil en entornos file:// donde el POST no llega a Formspree)
    ============================================================ */
 
 const contactForm    = document.getElementById('contactForm');
@@ -130,26 +133,61 @@ const formSuccess    = document.getElementById('formSuccess');
 
 const STORAGE_KEY_NAME = 'novanous-contact-name';
 
-// Al cargar la página: recuperar el nombre guardado
+// Al cargar la página: recuperar el nombre guardado en localStorage
 if (nameInput) {
   const savedName = localStorage.getItem(STORAGE_KEY_NAME);
   if (savedName) {
     nameInput.value = savedName;
   }
 
-  // Guardar el nombre cada vez que el usuario lo modifica
+  // Persistir el nombre cada vez que el usuario escribe
   nameInput.addEventListener('input', () => {
     localStorage.setItem(STORAGE_KEY_NAME, nameInput.value.trim());
   });
 }
 
-// Manejo del envío del formulario
+// Envío del formulario
 if (contactForm) {
-  contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    formSuccess.hidden = false;
-    contactForm.hidden = true;
-    formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault(); // Tomamos control del envío
+
+    const data     = new FormData(contactForm);
+    const action   = contactForm.getAttribute('action') || '';
+    const isLocal  = window.location.protocol === 'file:';
+    const noId     = action.includes('TU_ID_FORMSPREE');
+
+    if (isLocal || noId) {
+      // Entorno local o Formspree aún no configurado:
+      // mostrar confirmación en pantalla sin envío real
+      formSuccess.hidden = false;
+      contactForm.hidden = true;
+      formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    // Envío real a Formspree
+    try {
+      const res = await fetch(action, {
+        method:  'POST',
+        body:    data,
+        headers: { Accept: 'application/json' },
+      });
+
+      if (res.ok) {
+        // Éxito: mostrar confirmación y ocultar formulario
+        formSuccess.hidden = false;
+        contactForm.hidden = true;
+        formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // Limpiar nombre guardado tras envío exitoso
+        localStorage.removeItem(STORAGE_KEY_NAME);
+      } else {
+        // Formspree devolvió un error
+        alert('Hubo un problema al enviar el mensaje. Por favor intenta nuevamente.');
+      }
+    } catch {
+      // Error de red
+      alert('No se pudo conectar con el servidor. Verifica tu conexión e intenta nuevamente.');
+    }
   });
 }
 

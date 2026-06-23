@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta
       name="description"
       content="NovaNous, Inc. — Academia de conocimiento. Cursos de cultura general, ciencias, artes y deportes."
-    />
+    >
     <title>NovaNous, Inc. — Academia de Conocimiento</title>
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/styles.css">
   </head>
 
   <body>
     <!-- =============================================
          HEADER + NAVEGACIÓN
          ============================================= -->
-    <header class="site-header" role="banner">
+    <header class="site-header">
       <div class="header-inner">
 
         <!-- Logo -->
@@ -26,7 +26,7 @@
             class="logo-img"
             width="48"
             height="48"
-          />
+          >
           <span class="logo-text">
             <span class="logo-name">NovaNous</span>
             <span class="logo-tagline">Inc.</span>
@@ -47,8 +47,8 @@
         </button>
 
         <!-- Navegación principal -->
-        <nav class="main-nav" id="mainNav" role="navigation" aria-label="Navegación principal">
-          <ul class="nav-list" role="list">
+        <nav class="main-nav" id="mainNav" aria-label="Navegación principal">
+          <ul class="nav-list">
             <li><a href="#inicio" class="nav-link">Inicio</a></li>
             <li><a href="#cursos" class="nav-link">Cursos</a></li>
             <li><a href="#nosotros" class="nav-link">Sobre nosotros</a></li>
@@ -93,7 +93,7 @@
       <!-- ESTADÍSTICAS -->
       <section class="stats" aria-labelledby="statsTitle">
         <h2 class="sr-only" id="statsTitle">Estadísticas de NovaNous</h2>
-        <ul class="stats-grid" role="list">
+        <ul class="stats-grid">
           <li class="stat-card">
             <span class="stat-number">3</span>
             <span class="stat-label">Áreas de conocimiento</span>
@@ -105,10 +105,6 @@
           <li class="stat-card">
             <span class="stat-number">100%</span>
             <span class="stat-label">Contenido propio</span>
-          </li>
-          <li class="stat-card">
-            <span class="stat-number">UTN</span>
-            <span class="stat-label">Rigor académico verificado</span>
           </li>
         </ul>
       </section>
@@ -130,17 +126,17 @@
                NIVEL 1 — Áreas principales
                ============================================ -->
           <section class="level level--1 active" id="level1" aria-label="Áreas de conocimiento">
-            <div class="courses-grid" role="list">
+            <div class="courses-grid">
 
               <!-- Tarjeta: Ciencia y Filosofía (activa, abre Nivel 2) -->
-              <article class="course-card course-card--active" role="listitem" aria-labelledby="courseCiencia">
+              <article class="course-card course-card--active" aria-labelledby="courseCiencia">
                 <div class="course-card-img-wrap">
                   <img
                     src="./assets/card_ciencia.png"
                     alt="Collage de ciencia y filosofía: evolución humana, Einstein, Darwin, Descartes y otras figuras históricas"
                     class="course-card-img"
                     loading="lazy"
-                  />
+                  >
                   <span class="course-badge course-badge--available">Disponible</span>
                 </div>
                 <div class="course-card-body">
@@ -164,14 +160,14 @@
               </article>
 
               <!-- Tarjeta: Artes (inactiva) -->
-              <article class="course-card course-card--disabled" role="listitem" aria-labelledby="courseArtes">
+              <article class="course-card course-card--disabled" aria-labelledby="courseArtes">
                 <div class="course-card-img-wrap">
                   <img
                     src="./assets/card_artes.png"
                     alt="Collage de artes: la Puerta de Brandeburgo, bailarines de ballet, un pergamino antiguo, una violinista, la Mona Lisa, una escultura clásica y una sala de cine"
                     class="course-card-img"
                     loading="lazy"
-                  />
+                  >
                   <span class="course-badge course-badge--soon">Próximamente</span>
                 </div>
                 <div class="course-card-body">
@@ -179,21 +175,21 @@
                   <p class="course-card-desc">
                     Música, pintura, literatura, danza y cine. Catálogo en construcción.
                   </p>
-                  <button class="btn btn-secondary btn--sm" disabled aria-disabled="true">
+                  <button class="btn btn-secondary btn--sm" disabled>
                     Próximamente
                   </button>
                 </div>
               </article>
 
               <!-- Tarjeta: Deportes (inactiva) -->
-              <article class="course-card course-card--disabled" role="listitem" aria-labelledby="courseDeportes">
+              <article class="course-card course-card--disabled" aria-labelledby="courseDeportes">
                 <div class="course-card-img-wrap">
                   <img
                     src="./assets/card_deportes.png"
                     alt="Conjunto de implementos deportivos: balón de baloncesto, balón de fútbol americano, balón de fútbol, bate y pelota de béisbol, y raqueta de tenis"
                     class="course-card-img"
                     loading="lazy"
-                  />
+                  >
                   <span class="course-badge course-badge--soon">Próximamente</span>
                 </div>
                 <div class="course-card-body">
@@ -201,7 +197,7 @@
                   <p class="course-card-desc">
                     Estrategia, disciplina y rendimiento. Próximos cursos de ajedrez, atletismo y más.
                   </p>
-                  <button class="btn btn-secondary btn--sm" disabled aria-disabled="true">
+                  <button class="btn btn-secondary btn--sm" disabled>
                     Próximamente
                   </button>
                 </div>
@@ -227,10 +223,10 @@
               </button>
             </div>
 
-            <div class="subcategories-grid" role="list">
+            <div class="subcategories-grid">
 
               <!-- Ciencias Formales (inactiva) -->
-              <article class="sub-card sub-card--disabled" role="listitem" aria-labelledby="subFormales">
+              <article class="sub-card sub-card--disabled" aria-labelledby="subFormales">
                 <h4 class="sub-card-title" id="subFormales">Ciencias Formales</h4>
                 <p class="sub-card-desc">
                   Matemática, lógica, estadística e ingeniería. Catálogo en desarrollo.
@@ -239,7 +235,7 @@
               </article>
 
               <!-- Ciencias Sociales (inactiva) -->
-              <article class="sub-card sub-card--disabled" role="listitem" aria-labelledby="subSociales">
+              <article class="sub-card sub-card--disabled" aria-labelledby="subSociales">
                 <h4 class="sub-card-title" id="subSociales">Ciencias Sociales</h4>
                 <p class="sub-card-desc">
                   Historia, economía, ciencias políticas, derecho y sociología.
@@ -248,7 +244,7 @@
               </article>
 
               <!-- Ciencias Naturales (activa, abre Nivel 3) -->
-              <article class="sub-card sub-card--active" role="listitem" aria-labelledby="subNaturales">
+              <article class="sub-card sub-card--active" aria-labelledby="subNaturales">
                 <h4 class="sub-card-title" id="subNaturales">Ciencias Naturales</h4>
                 <p class="sub-card-desc">
                   Biología, química, física, geología y paleontología. Primer curso activo.
@@ -305,6 +301,7 @@
                 <a
                   href="./assets/paleontologia.pdf"
                   download="NovaNous-Paleontologia-ElLatidoDeLaTierra.pdf"
+                  hreflang="es"
                   class="btn btn-primary"
                   id="downloadPaleo"
                   aria-label="Descargar el material del curso de Paleontología en formato PDF"
@@ -340,7 +337,7 @@
 
           <!-- Valores: usa <aside> porque son información complementaria al texto principal -->
           <aside class="about-values" aria-label="Valores de NovaNous">
-            <ul class="values-list" role="list">
+            <ul class="values-list">
               <li class="value-item">
                 <h3 class="value-title">Rigor académico</h3>
                 <p class="value-desc">Cada curso está respaldado por fuentes verificadas y revisadas antes de publicarse.</p>
@@ -368,12 +365,35 @@
           <h2 class="section-title" id="contactTitle">Contacto</h2>
           <p class="section-subtitle">¿Tienes preguntas? Escríbenos y te respondemos pronto.</p>
 
+          <!-- Datos de contacto directo -->
+          <ul class="contact-info">
+            <li>
+              <span class="contact-info-label">Teléfono:</span>
+              <a href="tel:+50683592242" class="contact-info-link">+506 8359 2242</a>
+            </li>
+            <li>
+              <span class="contact-info-label">Correo:</span>
+              <a href="mailto:jgmarenco08@gmail.com" class="contact-info-link">jgmarenco08@gmail.com</a>
+            </li>
+          </ul>
+
+          <!--
+            Formulario conectado a Formspree.
+            INSTRUCCIÓN: reemplaza "TU_ID_FORMSPREE" por el ID real que obtienes
+            al crear un formulario en https://formspree.io (es gratis, solo requiere
+            registrar tu correo). El ID tiene el formato "xyzabc12".
+            Ejemplo: action="https://formspree.io/f/xyzabc12"
+          -->
           <form
             class="contact-form"
             id="contactForm"
-            novalidate
+            action="https://formspree.io/f/TU_ID_FORMSPREE"
+            method="POST"
             aria-label="Formulario de contacto"
           >
+            <!-- Campo oculto para Formspree: redirige al mismo sitio tras el envío -->
+            <input type="hidden" name="_next" value="">
+
             <div class="form-group">
               <label for="contactName" class="form-label">Nombre</label>
               <input
@@ -383,8 +403,9 @@
                 class="form-input"
                 autocomplete="name"
                 placeholder="Tu nombre completo"
+                required
                 aria-required="true"
-              />
+              >
             </div>
             <div class="form-group">
               <label for="contactEmail" class="form-label">Correo electrónico</label>
@@ -395,8 +416,9 @@
                 class="form-input"
                 autocomplete="email"
                 placeholder="tu@correo.com"
+                required
                 aria-required="true"
-              />
+              >
             </div>
             <div class="form-group">
               <label for="contactMsg" class="form-label">Mensaje</label>
@@ -406,13 +428,14 @@
                 class="form-input form-textarea"
                 rows="4"
                 placeholder="¿En qué podemos ayudarte?"
+                required
                 aria-required="true"
               ></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Enviar mensaje</button>
           </form>
 
-          <!-- Confirmación visible tras envío -->
+          <!-- Confirmación visible tras envío (JS fallback para file://) -->
           <p
             class="form-success"
             id="formSuccess"
@@ -428,13 +451,13 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="site-footer" role="contentinfo">
+    <footer class="site-footer">
       <div class="footer-inner">
         <p class="footer-copy">
           &copy; <span id="currentYear"></span> NovaNous, Inc. — Todos los derechos reservados.
         </p>
         <nav aria-label="Navegación del pie de página">
-          <ul class="footer-nav" role="list">
+          <ul class="footer-nav">
             <li><a href="#inicio" class="footer-link">Inicio</a></li>
             <li><a href="#cursos" class="footer-link">Cursos</a></li>
             <li><a href="#nosotros" class="footer-link">Sobre nosotros</a></li>
